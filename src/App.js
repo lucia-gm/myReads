@@ -22,6 +22,16 @@ class BooksApp extends React.Component {
     })
   }
 
+  updateShelf = (book,event) => {
+    BooksAPI.update(book,event).then(() => {
+      book.shelf = event
+      const updatedBooks = this.state.books.filter( b => b.id !== book.id)
+      updatedBooks.push(book)
+      this.setState({
+        books: updatedBooks,
+      })
+  })}
+
   render() {
     return (
       <div className="app">
@@ -58,7 +68,7 @@ class BooksApp extends React.Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {this.state.books.filter( book => book.shelf === "currentlyReading").map( book => (
-                      <Book title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id}/>
+                      <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.updateShelf}/>
                     ))}
                     </ol>
                   </div>
@@ -68,7 +78,7 @@ class BooksApp extends React.Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {this.state.books.filter( book => book.shelf === "wantToRead").map( book => (
-                      <Book title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id}/>
+                      <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.updateShelf}/>
                     ))}
                     </ol>
                   </div>
@@ -78,7 +88,7 @@ class BooksApp extends React.Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                     {this.state.books.filter( book => book.shelf === "read").map( book => (
-                      <Book title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id}/>
+                      <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.updateShelf}/>
                     ))}
                     </ol>
                   </div>
