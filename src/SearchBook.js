@@ -15,10 +15,18 @@ class SearchBook extends Component {
 
     if (this.state.query) {
       BooksAPI.search(query)
-      .then((books) => {
-        if (books instanceof Array) {
-          this.setState({ showingBooks: books})
-          console.log(this.state.showingBooks)
+      .then((queryBooks) => {
+        if (queryBooks instanceof Array) {
+          queryBooks.forEach( queryBook => {
+            queryBook.shelf = 'none'
+            this.props.books.map( (bookInLibrary) => {
+              if (bookInLibrary.id === queryBook.id) {
+                queryBook.shelf = bookInLibrary.shelf
+              }
+              return queryBook
+            })
+          })
+          this.setState({ showingBooks: queryBooks})
         } else {
           this.setState({ showingBooks: []})
         }
@@ -37,8 +45,9 @@ class SearchBook extends Component {
           <div className="search-books-input-wrapper">
 
             <input 
+              autoFocus="true"
               type="text" 
-              placeholder="Search by title or author"
+              placeholder="Search by category"
               value={this.state.query}
               onChange={(event) => this.updateSearch(event.target.value)}
             />

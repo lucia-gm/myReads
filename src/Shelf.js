@@ -8,7 +8,7 @@ class Shelf extends React.Component {
         <h2 className="bookshelf-title">{this.props.heading}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-          {this.props.book.filter( book => book.shelf === this.props.category).map( book => (
+          {this.props.books.filter( book => book.shelf === this.props.category).map( book => (
             <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
           ))}
           </ol>
