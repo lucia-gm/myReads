@@ -43,7 +43,10 @@ class SearchBook extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
           {this.state.query.length > 1 && this.state.showingBooks.length > 0 && this.state.showingBooks.map( (book) => (
+            (book.imageLinks) ?
             <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
+            :
+            <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
           ))}
           </ol>
         </div>
