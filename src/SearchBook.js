@@ -15,10 +15,15 @@ class SearchBook extends Component {
     this.setState({ query: query })
 
     if (this.state.query) {
-      BooksAPI.search(query).then((books)=>{
-      this.setState({ showingBooks: books})
-      console.log(this.state.showingBooks)
-    }) 
+      BooksAPI.search(query)
+      .then((books) => {
+        if (books instanceof Array) {
+          this.setState({ showingBooks: books})
+          console.log(this.state.showingBooks)
+        } else {
+          this.setState({ showingBooks: []})
+        }
+      })
     } else {
       this.setState({ showingBooks: []})
     }
@@ -42,13 +47,21 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {this.state.query.length > 1 && this.state.showingBooks.length > 0 && this.state.showingBooks.map( (book) => (
+          {this.state.query && this.state.showingBooks.map( (book) => (
             (book.imageLinks) ?
             <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
             :
             <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
           ))}
           </ol>
+
+          {this.state.query.length > 2 && this.state.showingBooks.length ===0 && (
+            <div className="search-error">
+              <h4>Sorry :&#40;</h4>
+              <p>Unfortunately, no book matches your search. <br />
+              Please, type another category.</p>
+            </div>
+          )}
         </div>
       </div>
     )
