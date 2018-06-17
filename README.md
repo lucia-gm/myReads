@@ -1,8 +1,10 @@
-# MyReads
+# MyReads: A Book Tracking App
 
 This project is part of the Udacity Front-End Nanodegree.
 
-A template with static code has to be refactored, using React, to add interactivity to the app.
+A template with static code is refactored using React, to add interactivity to the app.
+
+![Preview](src/images/preview.png)
 
 
 ## Porject Overview
