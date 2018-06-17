@@ -8,7 +8,7 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books: [],
+    books: []
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class BooksApp extends React.Component {
       const updatedBooks = this.state.books.filter( b => b.id !== book.id)
       updatedBooks.push(book)
       this.setState({
-        books: updatedBooks,
+        books: updatedBooks
       })
   })}
 

@@ -11,7 +11,7 @@ class SearchBook extends Component {
   }
 
   updateSearch = (query) => {
-    this.setState({ query: query })
+    this.setState({ query })
 
     if (this.state.query) {
       BooksAPI.search(query)
@@ -38,6 +38,8 @@ class SearchBook extends Component {
   }
 
   render() {
+    const { query, showingBooks } = this.state
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -48,7 +50,7 @@ class SearchBook extends Component {
               autoFocus="true"
               type="text" 
               placeholder="Search by category"
-              value={this.state.query}
+              value={query}
               onChange={(event) => this.updateSearch(event.target.value)}
             />
 
@@ -56,7 +58,7 @@ class SearchBook extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {this.state.query && this.state.showingBooks.map( (book) => (
+          {query && showingBooks.map( (book) => (
             (book.imageLinks) ?
             <Book book={book} shelf={book.shelf} title={book.title} author={book.authors} img={book.imageLinks.thumbnail} key={book.id} onUpdateShelf={this.props.onUpdateShelf}/>
             :
@@ -64,7 +66,7 @@ class SearchBook extends Component {
           ))}
           </ol>
 
-          {this.state.query.length > 2 && this.state.showingBooks.length ===0 && (
+          {query.length > 2 && showingBooks.length ===0 && (
             <div className="search-error">
               <h4>Sorry :&#40;</h4>
               <p>Unfortunately, no book matches your search. <br />
