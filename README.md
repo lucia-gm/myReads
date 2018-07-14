@@ -4,7 +4,7 @@ This project is part of the Udacity Front-End Nanodegree.
 
 A template with static code is refactored using React, to add interactivity to the app.
 
-![Preview](src/images/preview.png)
+![Preview](src/images/myReads_preview.mov.gif)
 
 
 ## Porject Overview
