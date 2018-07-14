@@ -9,7 +9,7 @@ const Book = (props) => (
         <ShelfSelector book={props.book} shelf={props.shelf} onUpdateShelf={props.onUpdateShelf}/>
       </div>
       <div className="book-title">{props.title}</div>
-      <div className="book-authors">{props.author}</div>
+      <div className="book-authors">{props.author.join(', ')}</div>
     </div>
   </li>
 )
