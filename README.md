@@ -1,13 +1,11 @@
 # MyReads: A Book Tracking App
-
-This project is part of the Udacity Front-End Nanodegree.
-
 A template with static code is refactored using React, to add interactivity to the app.
 
 ![Preview](src/images/myReads.gif)
 
 
 ## Porject Overview
+The project is part of the Udacity Front-End Nanodegree and [here](https://github.com/udacity/reactnd-project-myreads-starter) is the starter code. A template with static code of the CSS and HTML markup that may be used is provided. I have added interactivity to the app by refactoring the static code in this template using React.
 
 A bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. An API server and client library is provided and will be used to persist information as you interact with the application.
 
@@ -20,7 +18,6 @@ When you navigate back to the main page from the search page, you instantly see 
 
 
 ## How To Run The Application
-
 1. Download or clone this repository.
 2. From inside the new directory:
     * install all project dependencies with `npm install`
@@ -29,17 +26,10 @@ When you navigate back to the main page from the search page, you instantly see 
 
 
 ## Important
-
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
 
-## Credits
-
-The starter code is from [Udacity](https://github.com/udacity/reactnd-project-myreads-starter).
-
-
 ## License
-
 MIT License
 
 Copyright (c) 2018 Lucia Gonzalez Moscoso
